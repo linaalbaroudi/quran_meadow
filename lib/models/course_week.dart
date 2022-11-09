@@ -3,13 +3,13 @@ import 'course_week_day.dart';
 class CourseWeek{
   int id;
   List<CourseWeekDay> days;
-  double? weekGrade;
+  double weekGrade;
   static const int totalWeekGrade = 100;
 
   CourseWeek({
     required this.id,
     required this.days,
-    this.weekGrade,
+    this.weekGrade = 0,
   });
 
   static List<CourseWeek> samples = [
