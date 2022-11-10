@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import '../models/user.dart';
 
 class CircleImage extends StatelessWidget {
   // 1
   const CircleImage({
     super.key,
-    this.imageProvider,
+    this.imageUrl,
     this.imageRadius = 50,
   });
 
   // 2
   final double imageRadius;
-  final ImageProvider? imageProvider;
+  final String? imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +21,9 @@ class CircleImage extends StatelessWidget {
       radius: imageRadius,
       // 4
       child: CircleAvatar(
+        backgroundColor: Colors.grey,
         radius: imageRadius - 5,
-        backgroundImage: imageProvider,
+        backgroundImage: AssetImage(User.sample.imageUrl),
       ),
     );
   }

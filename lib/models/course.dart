@@ -6,6 +6,7 @@ class Course {
   Level level; //todo: make it a module
   String imageUrl;
   String institute;
+  bool favorite;
 
 
   // TODO: Add servings and ingredients here
@@ -16,6 +17,7 @@ class Course {
     required this.level,
     required this.imageUrl,
     required this.institute,
+    this.favorite = false
   });
 
   static List<Course> samples = [

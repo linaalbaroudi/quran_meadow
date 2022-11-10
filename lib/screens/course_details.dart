@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/course.dart';
-import '../widgets/week_card.dart';
+import '../screens/weeks_gridview.dart';
 
 class CourseDetails extends StatefulWidget {
   const CourseDetails({Key? key, required this.course}) : super(key: key);
@@ -10,8 +10,35 @@ class CourseDetails extends StatefulWidget {
   State<CourseDetails> createState() => _CourseDetailsState();
 }
 
-class _CourseDetailsState extends State<CourseDetails> {
+class _CourseDetailsState extends State<CourseDetails> with SingleTickerProviderStateMixin{
   // TODO: Add _sliderVal here
+  late final TabController? controller;
+  int _selectedIndex = 0;
+
+  static List<Widget> pages = [];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+      controller?.animateTo(index);
+    });
+  }
+  @override
+  void initState() {
+    super.initState();
+    controller = TabController(length: 3, initialIndex: _selectedIndex, vsync: this);
+    pages = <Widget>[
+      WeeksGridView(course: widget.course),
+      Icon(Icons.abc),
+      Icon(Icons.abc),
+    ];
+  }
+
+  @override
+  void dispose() {
+    controller!.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,140 +47,33 @@ class _CourseDetailsState extends State<CourseDetails> {
         title: Text(widget.course.title),
       ),
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            SizedBox(
-              height: 185,
-              //width: 370,
-              child: Stack(
-                children: <Widget>[
-                  Image.asset(
-                    widget.course.imageUrl,
-                    width: double.infinity,
-                    height: 185,
-                    fit: BoxFit.cover,
-                  ),
-                  Positioned(
-                    top: 4,
-                    left: 0,
-                    child: Container(
-                      //width: 20,
-                      //height: 40,
-                      padding: const EdgeInsets.all(10),
-                      decoration: const BoxDecoration(
-                        color: Color.fromRGBO(102,102,102, 0),
-                        borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(15),
-                          topRight: Radius.circular(15),
-                        ),
-                      ),
-                      child: const Text(
-                        ' Course ',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 44,
-                    left: 0,
-                    child: Container(
-                      //width: 20,
-                      //height: 40,
-                      padding: const EdgeInsets.all(10),
-                      decoration: const BoxDecoration(
-                        color: Color.fromRGBO(102,102,102, 0.6),
-                        borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(15),
-                          topRight: Radius.circular(15),
-                        ),
-                      ),
-                      child: Row(
-                        children: [
-                          const Icon(
-                            Icons.layers,
-                            color: Colors.white, //todo add theme
-                          ),
-                          const SizedBox(
-                            width: 6,
-                          ),
-                          const Text(
-                            'level: ',
-                            style: TextStyle(
-                                //fontSize: 20,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            widget.course.level.id.toString(),
-                            style: const TextStyle(
-                                //fontSize: 20,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 0,
-                    left: 0,
-                    child: Container(
-                      //width: 20,
-                      //height: 40,
-                      padding: const EdgeInsets.all(10),
-                      decoration: const BoxDecoration(
-                        color: Color.fromRGBO(102,102,102, 0.7),
-                        borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(15),
-                          topRight: Radius.circular(15),
-                        ),
-                      ),
-                      child: Row(
-                        children: const [
-                          Icon(
-                            Icons.person,
-                            color: Colors.white, //todo add theme
-                          ),
-                          Text(
-                            //todo: make it dynamic
-                            ' Lina Albaroudi',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
-            // todo: add tabs to display tasks, marks, and course certificate
-            // TODO: Add Expanded
-            Expanded(
-              child: GridView(
-                padding: const EdgeInsets.all(8.0),
-                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 300,
-                    childAspectRatio: 4 / 3,
-                    crossAxisSpacing: 15,
-                    mainAxisSpacing: 15),
-                children: widget.course.level.weeks.map((week) {
-                  return WeekCard(week: week);
-                }).toList(),
-              ),
-            ),
-            // TODO: Add Slider() here
+        child: TabBarView(
+          controller: controller,
+          children: [
+            WeeksGridView(course: widget.course),
+            Icon(Icons.ac_unit), //todo add marks tab
+            Icon(Icons.access_alarm), //todo add certificate tab
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Theme.of(context).textSelectionTheme.selectionColor,
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.quiz_rounded),
+            label: 'Tasks',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.fact_check_rounded),
+            label: 'Grades',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.stars_rounded),
+            label: 'certificate',
+          ),
+        ],
       ),
     );
   }

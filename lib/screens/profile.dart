@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quran_meadows/app_theme.dart';
 import '../widgets/circle_image.dart';
+import '../models/user.dart';
 
 class Profile extends StatelessWidget {
   const Profile({Key? key}) : super(key: key);
@@ -9,8 +10,8 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(
-        color: Colors.green,
+      decoration: const BoxDecoration(
+        color: Color.fromRGBO(133,78,155,1),
         image: DecorationImage(
           image: AssetImage('assets/morocco-tiles-background.jpg'),
           fit: BoxFit.cover,
@@ -19,29 +20,31 @@ class Profile extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          SizedBox(
+          const SizedBox(
             height: 50,
           ),
-          CircleImage(),
-          SizedBox(height: 50),
+          CircleImage(imageUrl: User.sample.imageUrl,),
+          const SizedBox(height: 50),
           Expanded(
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(60),
-                      topRight: Radius.circular(60))),
+                      topRight: Radius.circular(60),
+                  ),
+              ),
               child: SingleChildScrollView(
                 child: Padding(
-                  padding: EdgeInsets.all(30),
+                  padding: const EdgeInsets.all(30),
                   child: Column(
                     children: <Widget>[
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Container(
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
+                        padding: const EdgeInsets.all(10),
+                        decoration: const BoxDecoration(
                             border: Border(
                                 bottom: BorderSide(color: Colors.grey))),
                         child: Column(
@@ -57,7 +60,7 @@ class Profile extends StatelessWidget {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 40,
                       ),
                       // Text(
@@ -100,7 +103,7 @@ class Profile extends StatelessWidget {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(50),
                                   color: Colors.blue),
-                              child: Center(
+                              child: const Center(
                                 child: Text(
                                   "Facebook",
                                   style: TextStyle(
@@ -110,7 +113,7 @@ class Profile extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 30,
                           ),
                           Expanded(
@@ -119,7 +122,7 @@ class Profile extends StatelessWidget {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(50),
                                   color: Colors.black),
-                              child: Center(
+                              child: const Center(
                                 child: Text(
                                   "Github",
                                   style: TextStyle(
