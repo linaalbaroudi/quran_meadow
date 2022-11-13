@@ -20,7 +20,7 @@ class AppTheme {
         color: Colors.black,
     ),
     headline1: GoogleFonts.openSans(
-      fontSize: 24.0,
+      fontSize: 22.0,
       fontWeight: FontWeight.w600,
       color: Colors.white,
     ),
