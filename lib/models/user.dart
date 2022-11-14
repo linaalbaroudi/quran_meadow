@@ -12,5 +12,5 @@ class User {
     required this.imageUrl,
   });
 
-  static User sample = User(id: 1, name: 'Lina Albaroudi', imageUrl: 'assets/lina-logo.jpg');
+  static User sample = User(id: 1, name: 'Lina Albaroudi', imageUrl: 'assets/images/lina-logo.jpg');
 }

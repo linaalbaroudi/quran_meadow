@@ -13,7 +13,7 @@ class Profile extends StatelessWidget {
       decoration: const BoxDecoration(
         color: Color.fromRGBO(133,78,155,1),
         image: DecorationImage(
-          image: AssetImage('assets/morocco-tiles-background.jpg'),
+          image: AssetImage('assets/images/morocco-tiles-background.jpg'),
           fit: BoxFit.cover,
         ),
       ),
