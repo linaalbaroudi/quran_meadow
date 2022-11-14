@@ -41,7 +41,7 @@ class _WeekDetailsState extends State<WeekDetails> with SingleTickerProviderStat
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          widget.course.title,
+          "Course Details - Weeks",
           style: Theme.of(context).textTheme.headline1,
         ),
       ),
@@ -57,6 +57,7 @@ class _WeekDetailsState extends State<WeekDetails> with SingleTickerProviderStat
       floatingActionButton: ButtonBar(
         children: [
           FloatingActionButton.small(
+            heroTag: 'navigateBefore',
             onPressed: () {
               (_index != 0) ? _index-- : _index = (widget.course.level.weeks.length - 1);
               controller.animateTo(_index);
@@ -67,6 +68,7 @@ class _WeekDetailsState extends State<WeekDetails> with SingleTickerProviderStat
             child: const Icon(Icons.navigate_before),
           ),
           FloatingActionButton.small(
+            heroTag: 'navigateNext',
             onPressed: () {
               (_index != widget.course.level.weeks.length - 1) ? _index++ : _index = 0;
               controller.animateTo(_index);

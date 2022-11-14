@@ -24,13 +24,13 @@ class WeekCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(15.0),
       ),
       child: Container(
-        padding: const EdgeInsets.all(15),
+        //padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
           color: color,
           borderRadius: BorderRadius.circular(15),
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -42,25 +42,18 @@ class WeekCard extends StatelessWidget {
                 ),
                 Text(
                   "  Week ${week.id}",
-                  style: AppTheme.lightTextTheme.headline6?.copyWith(
-                    color: Colors.white,
-                  ),
+                  style: AppTheme.lightTextTheme.headline5,
                 ),
               ],
             ),
-            Container(
-              decoration: BoxDecoration(
-                color: const Color.fromRGBO(91, 91, 91, 1),
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  week.weekGrade.toString(),
-                  style: AppTheme.lightTextTheme.headline1?.copyWith(
-                    fontSize: 16,
-                  ),
-                ),
+            const SizedBox(
+              height: 2,
+            ),
+            Chip(
+              //backgroundColor: const Color.fromRGBO(91, 91, 91, 1),
+              label: Text(
+                week.weekGrade.toString(),
+                style: AppTheme.lightTextTheme.bodyText2,
               ),
             ),
           ],

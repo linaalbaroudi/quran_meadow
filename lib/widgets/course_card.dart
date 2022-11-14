@@ -53,7 +53,7 @@ class _CourseCardState extends State<CourseCard> {
                                   topLeft: Radius.circular(15))),
                           child: Text(
                             widget.course.title,
-                            style: AppTheme.lightTextTheme.headline2,
+                            style: AppTheme.lightTextTheme.headline4,
                             softWrap: true,
                             overflow: TextOverflow.fade,
                           ),

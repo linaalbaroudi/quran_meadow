@@ -33,6 +33,15 @@ class AppTheme {
       fontWeight: FontWeight.bold,
       color: Colors.teal,
     ),
+    headline4: GoogleFonts.openSans(
+      fontSize: 18.0,
+      color: Colors.white,
+    ),
+    headline5: GoogleFonts.openSans(
+      fontSize: 18.0,
+      color: Colors.white,
+      fontWeight: FontWeight.bold,
+    ),
     headline6: GoogleFonts.openSans(
       fontSize: 20.0,
       fontWeight: FontWeight.bold,

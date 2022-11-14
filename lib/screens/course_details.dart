@@ -3,8 +3,6 @@ import 'package:quran_meadows/models/course_week.dart';
 import '../models/course.dart';
 import '../screens/weeks_gridview.dart';
 
-
-
 class CourseDetails extends StatefulWidget {
   const CourseDetails({Key? key, required this.course}) : super(key: key);
   final Course course;
@@ -37,8 +35,12 @@ class _CourseDetailsState extends State<CourseDetails>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(toolbarHeight: 50,
-        title: Text(widget.course.title),
+      appBar: AppBar(
+        toolbarHeight: 50,
+        title: Text(
+          'Course Details',
+          style: Theme.of(context).textTheme.headline1,
+        ),
         bottom: TabBar(
           controller: controller,
           unselectedLabelColor: Colors.white30,
@@ -59,82 +61,79 @@ class _CourseDetailsState extends State<CourseDetails>
           ],
         ),
       ),
-      body:
-      Column(
+      body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Expanded(
             flex: 1,
-            child: Stack(
-              children: <Widget>[
-                Image.asset(
-                  widget.course.imageUrl,
-                  width: double.infinity,
-                  height: 150,
-                  fit: BoxFit.cover,
-                ),
-                Positioned(
-                  top: 4,
-                  left: 0,
-                  child: Container(
-                    padding: const EdgeInsets.all(10),
-                    child: const RotatedBox(
-                      quarterTurns: 3,
-                      child: Text(
-                        ' Course ',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+            child: Container(
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 1,
+                    blurRadius: 10,
+                    //offset: const Offset(0, 4), // changes position of shadow
+                  ),
+                ],
+              ),
+              child: Stack(
+                children: <Widget>[
+                  Image.asset(
+                    widget.course.imageUrl,
+                    width: double.infinity,
+                    //height: 150,
+                    fit: BoxFit.cover,
+                  ),
+                  Container(
+                    width: 200,
+                    height: double.infinity,
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                    color: Colors.black38,
+                    child: Text(
+                      widget.course.title,
+                      style: Theme.of(context).textTheme.headline4,
+                      softWrap: true,
+                      overflow: TextOverflow.fade,
                     ),
                   ),
-                ),
-                Positioned(
-                  bottom: 10,
-                  left: 46,
-                  child: Container(
-                    //width: 20,
-                    //height: 40,
-                    padding: const EdgeInsets.all(10),
-                    decoration: const BoxDecoration(
-                      color: Color.fromRGBO(102, 102, 102, 0.6),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(15),
-                        //topRight: Radius.circular(15),
-                      ),
-                    ),
-                    child: Row(
-                      children: [
-                        const Icon(
-                          Icons.layers,
-                          color: Colors.white, //todo add theme
-                        ),
-                        const SizedBox(
-                          width: 6,
-                        ),
-                        const Text(
-                          'level: ',
-                          style: TextStyle(
-                            //fontSize: 20,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          widget.course.level.id.toString(),
-                          style: const TextStyle(
-                            //fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                  Positioned(
+                    bottom: 10,
+                    right: 10,
+                    child: Chip(
+                      backgroundColor: Colors.teal,
+                      label: Row(
+                        children: [
+                          const Icon(
+                            Icons.layers,
+                            color: Colors.white, //todo add theme
                           ),
-                        ),
-                      ],
+                          const SizedBox(
+                            width: 6,
+                          ),
+                          const Text(
+                            'level: ',
+                            style: TextStyle(
+                                //fontSize: 20,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            widget.course.level.id.toString(),
+                            style: const TextStyle(
+                              //fontSize: 20,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-
-              ],
+                ],
+              ),
             ),
           ),
           Expanded(
@@ -150,18 +149,18 @@ class _CourseDetailsState extends State<CourseDetails>
           ),
         ],
       ),
-
       floatingActionButton: ButtonBar(
         children: [
           FloatingActionButton.small(
+            heroTag: 'courseTabs',
             onPressed: () {
               (_index != 2) ? _index++ : _index = 0;
               controller.animateTo(_index);
               setState(() {});
             },
-            child: const Icon(Icons.navigate_next),
             hoverElevation: 0,
             elevation: 0,
+            child: const Icon(Icons.navigate_next),
           )
         ],
       ),

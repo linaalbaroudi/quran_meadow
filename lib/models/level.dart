@@ -9,7 +9,7 @@ class Level{
       {
         required this.id,
         required this.weeks,
-        this.grade
+        this.grade = 0
       }
       );
 

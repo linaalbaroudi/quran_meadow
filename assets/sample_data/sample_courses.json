@@ -1,0 +1,144 @@
+{
+  "courses": [
+    {
+      "id": 1,
+      "title": "Quran Meadows - Baqarah (1-177)",
+      "imageUrl": "assets/images/quran-course.jpg",
+      "institute": "Quran Meadow App",
+      "favorite": false,
+      "batch": 1,
+      "level": {
+        "id": 1,
+        "grade": 0,
+        "weeks": [
+          {
+            "id": 1,
+            "weekGrade": 0,
+            "weeklyExamGrade": 0,
+            "totalWeekGrade": 100,
+            "days": [
+              {
+                "id": "1",
+                "date": "",
+                "quorum": "Baqara (1-18)",
+                "dayGrade": 0,
+                "totalDayGrade": 100,
+                "tasks": [
+                  {
+                    "id": 1,
+                    "description": "individual reading",
+                    "flag": "mandatory",
+                    "times": 1,
+                    "userMark": 0
+                  },
+                  {
+                    "id": 2,
+                    "description": "Listening to the reader and recitation after itg",
+                    "flag": "mandatory",
+                    "times": 1,
+                    "userMark": 0
+                  },
+                  {
+                    "id": 3,
+                    "description": "sloping repetition",
+                    "flag": "mandatory",
+                    "times": 3,
+                    "userMark": 0
+                  },
+                  {
+                    "id": 4,
+                    "description": "Read in Prayer",
+                    "flag": "optional",
+                    "times": 1,
+                    "userMark": 0
+                  }
+                ]
+              },
+              {
+                "\"id\": \"2\",\n\"date\": \"\",\n\"quorum\": \"Baqara (1-1)\",\n\"dayGrade\": 0,\n\"totalDayGrade\": 100,\n\"tasks\": [\n  {\n    \"id\": 1,\n    \"description\": \"individual reading\",\n    \"flag\": \"mandatory\",\n    \"times\": 1,\n    \"userMark\": 0\n  },\n  {\n    \"id\": 2,\n    \"description\": \"Listening to the reader and recitation after itg\",\n    \"flag\": \"mandatory\",\n    \"times\": 1,\n    \"userMark\": 0\n  },\n  {\n    \"id\": 3,\n    \"description\": \"sloping repetition\",\n    \"flag\": \"mandatory\",\n    \"times\": 3,\n    \"userMark\": 0\n  },\n  {\n    \"id\": 4,\n    \"description\": \"Read in Prayer\",\n    \"flag\": \"optional\",\n    \"times\": 1,\n    \"userMark\": 0\n  }\n],": ""
+              },
+              {
+
+              },
+              {
+
+              },
+              {
+
+              },
+              {
+
+              },
+              {
+
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "weekGrade": 0,
+            "weeklyExamGrade": 0,
+            "totalWeekGrade": 100,
+            "days": [
+              {
+                "id": "1",
+                "date": "",
+                "quorum": "Baqara (78-)",
+                "dayGrade": 0,
+                "totalDayGrade": 100,
+                "tasks": [
+                  {
+                    "id": 1,
+                    "description": "individual reading",
+                    "flag": "mandatory",
+                    "times": 1,
+                    "userMark": 0
+                  },
+                  {
+                    "id": 2,
+                    "description": "Listening to the reader and recitation after itg",
+                    "flag": "mandatory",
+                    "times": 1,
+                    "userMark": 0
+                  },
+                  {
+                    "id": 3,
+                    "description": "sloping repetition",
+                    "flag": "mandatory",
+                    "times": 3,
+                    "userMark": 0
+                  },
+                  {
+                    "id": 4,
+                    "description": "Read in Prayer",
+                    "flag": "optional",
+                    "times": 1,
+                    "userMark": 0
+                  }
+                ]
+              },
+              {
+
+              },
+              {
+
+              },
+              {
+
+              },
+              {
+
+              },
+              {
+
+              },
+              {
+
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
