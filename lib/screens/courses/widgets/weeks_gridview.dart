@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../models/course.dart';
-import '../widgets/week_card.dart';
-import '../screens/week_details.dart';
+import '../../../models/course.dart';
+import 'week_card.dart';
+import '../week_details_screen.dart';
 
 class WeeksGridView extends StatelessWidget {
   const WeeksGridView({Key? key, required this.course}) : super(key: key);

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../app_theme.dart';
-import '../models/course_week.dart';
+import '../../../app_theme.dart';
+import '../../../models/course_week.dart';
 import 'dart:math';
 
 class WeekCard extends StatelessWidget {

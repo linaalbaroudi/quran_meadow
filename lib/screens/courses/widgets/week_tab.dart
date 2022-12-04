@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import '../app_theme.dart';
-import '../models/course.dart';
-import '../models/course_week.dart';
+import '../../../app_theme.dart';
+import '../../../models/course.dart';
+import '../../../models/course_week.dart';
 import 'dart:math';
 
 class WeekTab extends StatefulWidget {

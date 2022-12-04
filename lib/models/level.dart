@@ -1,17 +1,22 @@
 import 'course_week.dart';
 
-class Level{
-  int id;
-  List<CourseWeek> weeks;
-  double? grade;
+class Level {
+  final int id;
+  final List<CourseWeek> weeks;
+  final double? grade;
 
-  Level(
-      {
-        required this.id,
-        required this.weeks,
-        this.grade = 0
-      }
-      );
+  Level({required this.id, required this.weeks, this.grade = 0});
+
+  Level copyWith({
+    int? id,
+    List<CourseWeek>? weeks,
+    double? grade,
+  }) {
+    return Level(
+        id: id ?? this.id,
+        weeks: weeks ?? this.weeks,
+        grade: grade ?? this.grade);
+  }
 
   static List<Level> samples = [
     Level(id: 1, weeks: CourseWeek.samples),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:quran_meadows/widgets/week_tab.dart';
-import '../models/course.dart';
-import '../models/course_week.dart';
+import 'package:quran_meadows/screens/courses/widgets/week_tab.dart';
+import '../../models/course.dart';
+import '../../models/course_week.dart';
 
 class WeekDetails extends StatefulWidget {
   const WeekDetails({Key? key, required this.courseWeek, required this.course})

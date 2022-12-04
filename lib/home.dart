@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import './screens/courses.dart';
-import './screens/my_tasks.dart';
-import './screens/profile.dart';
+import 'screens/courses/courses_screen.dart';
+import 'screens/my_tasks/my_tasks_screen.dart';
+import 'screens/profile/profile_screen.dart';
 
 // 1
 class Home extends StatefulWidget {

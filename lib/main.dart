@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'models/course.dart';
-import 'widgets/course_card.dart';
-import 'screens/course_details.dart';
+import 'screens/courses/widgets/course_card.dart';
+import 'screens/courses/course_details_screen.dart';
 import 'app_theme.dart';
 import 'home.dart';
 

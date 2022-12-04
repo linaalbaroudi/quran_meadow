@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quran_meadows/models/course_week.dart';
-import '../models/course.dart';
-import '../screens/weeks_gridview.dart';
+import '../../models/course.dart';
+import 'widgets/weeks_gridview.dart';
 
 class CourseDetails extends StatefulWidget {
   const CourseDetails({Key? key, required this.course}) : super(key: key);

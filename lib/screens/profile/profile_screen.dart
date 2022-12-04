@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quran_meadows/app_theme.dart';
-import '../widgets/circle_image.dart';
-import '../models/user.dart';
+import 'circle_image.dart';
+import '../../models/user.dart';
 
 class Profile extends StatelessWidget {
   const Profile({Key? key}) : super(key: key);

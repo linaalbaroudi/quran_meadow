@@ -1,10 +1,10 @@
 import 'task.dart';
 
 class Task{
-  int id;
-  String description;
-  Flag flag; //mandatory or optional
-  int times;
+  int? id;
+  String? description;
+  Flag? flag; //mandatory or optional
+  int? times;
   int? userMark;
 
   Task({
@@ -14,6 +14,22 @@ class Task{
     required this.times,
     this.userMark
   });
+
+  Task copyWith({
+    int? id,
+    String? description,
+    Flag? flag,
+    int? times,
+    int? userMark,
+}){
+    return Task(
+      id: id ?? this.id,
+      description: description ?? this.description,
+      flag: flag ?? this.flag,
+      times: times ?? this.times,
+      userMark: userMark ?? this.userMark
+    );
+  }
 
   static List<Task> samples = [
     Task(id: 1, description: "individual reading", flag: Flag.mandatory, times: 1),

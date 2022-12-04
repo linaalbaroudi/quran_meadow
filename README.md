@@ -1,10 +1,16 @@
 # quran_meadows
 
-A new Flutter project.
+An app for memorizing Quran.
 
-## Getting Started
+## App Features
 
-This project is a starting point for a Flutter application.
+Users can start a level of their choice, then the app will generate a schedule with daily tasks.
+Each level consist of 12 weeks.
+Each week has daily tasks.
+Tasks could be new quorum, revision, or tests.  
+A user can memorize the whole Quran in 4 years. 
+
+## Coming Features
 
 A few resources to get you started if this is your first Flutter project:
 

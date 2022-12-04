@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../models/course.dart';
-import '../app_theme.dart';
+import '../../../models/course.dart';
+import '../../../app_theme.dart';
 
 class CourseCard extends StatefulWidget {
   const CourseCard({Key? key, required this.course}) : super(key: key);
