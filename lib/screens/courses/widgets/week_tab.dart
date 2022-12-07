@@ -60,7 +60,6 @@ class _WeekTabState extends State<WeekTab> {
                   color: Colors.grey.withOpacity(0.5),
                   spreadRadius: 1,
                   blurRadius: 10,
-                  //offset: const Offset(0, 4), // changes position of shadow
                 ),
               ],
             ),
@@ -154,27 +153,9 @@ class _WeekTabState extends State<WeekTab> {
                       ],
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Divider(),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        "  Week Score:   ",
-                        style: Theme.of(context).textTheme.headline3,
-                      ),
-                      Text(
-                        _weekGrade.toString(),
-                        style: Theme.of(context).textTheme.bodyText2,
-                      ),
-                    ],
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Divider(),
-                  ),
+                  const Divider(),
+                  buildScoreField(widget.week),
+                  const Divider(),
                   Row(
                     children: [
                       SizedBox(
@@ -216,14 +197,15 @@ class _WeekTabState extends State<WeekTab> {
                           },
                         ),
                       ),
-                      IconButton(
-                          onPressed: () {
-                            _formKey.currentState?.save();
-                          },
-                          icon: const Icon(
-                            Icons.save_rounded,
-                            color: Colors.teal,
-                          ))
+                      ElevatedButton(
+                        onPressed: (){},
+                        style: ElevatedButton.styleFrom(
+                            shape: const CircleBorder(),
+                            backgroundColor: Colors.teal,
+                            fixedSize: const Size(50,50)
+                        ),
+                        child: const Icon(Icons.save_rounded),
+                      ),
                     ],
                   ),
                 ],
@@ -232,24 +214,81 @@ class _WeekTabState extends State<WeekTab> {
           ),
         ),
         Expanded(
-            flex: 5,
-            child: ListView.builder(
-                padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 8),
-                itemCount: widget.week.days.length,
-                //shrinkWrap: true,
-                itemBuilder: (BuildContext context, int index) {
-                  return InkWell(
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return DayDetails();
-                      }));
-                    },
-                    splashColor: Theme.of(context).primaryColor,
-                    borderRadius: BorderRadius.circular(15),
-                    child: DayCard(day: widget.week.days[index]),
-                  );
-                })),
+          flex: 5,
+          child: ListView.builder(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 14.0, vertical: 8),
+              itemCount: widget.week.days.length,
+              //shrinkWrap: true,
+              itemBuilder: (BuildContext context, int index) {
+                return InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                          print(widget.week.days[index].id);
+                      return DayDetails(
+                        day: widget.week.days[index],
+                        week: widget.week,
+                        imageUrl: widget.course.imageUrl,
+                      );
+                    }));
+                  },
+                  splashColor: Theme.of(context).primaryColor,
+                  borderRadius: BorderRadius.circular(15),
+                  child: DayCard(day: widget.week.days[index]),
+                );
+              }),
+        ),
+      ],
+    );
+  }
+
+  Widget buildScoreField(CourseWeek week) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Text(
+          "Week Score:  ",
+          style: Theme.of(context).textTheme.headline3,
+        ),
+        SizedBox(
+          width: 90,
+          height: 48,
+          child: TextField(
+            controller: null,
+            enabled: false,
+            decoration: InputDecoration(
+              hintText: "${week.weekGrade}",
+              contentPadding:
+              const EdgeInsets.symmetric(vertical: 0, horizontal: 8),
+              disabledBorder: const OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.grey),
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(
+          width: 8,
+        ),
+        Container(
+          height: 48,
+          width: 90,
+          padding: const EdgeInsets.all(8),
+          decoration: const BoxDecoration(
+            color: Colors.grey,
+            borderRadius: BorderRadius.all(
+              Radius.circular(6),
+            ),
+          ),
+          child: const Center(
+            child: Text(
+              "/ 100",
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ),
       ],
     );
   }

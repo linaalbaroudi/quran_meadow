@@ -21,7 +21,7 @@ class GradeManager extends ChangeNotifier {
   double _calculateDayGrade(CourseWeekDay day, int value, int taskIndex,){
     double total = 0;
     List<Task> tasks = day.tasks;
-    double taskWorth = 100 / tasks[taskIndex].times!;
+    double taskWorth = 100 / tasks[taskIndex].times;
     total = value * taskWorth;
     return total;
   }
