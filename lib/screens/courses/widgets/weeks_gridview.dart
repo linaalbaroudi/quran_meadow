@@ -18,7 +18,7 @@ class WeeksGridView extends StatelessWidget {
           crossAxisSpacing: 15,
           mainAxisSpacing: 15),
       //shrinkWrap: true,
-      children: course.level.weeks.map((week) {
+      children: course.weeks.map((week) {
         return InkWell(
           onTap: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {

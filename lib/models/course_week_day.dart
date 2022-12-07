@@ -5,15 +5,14 @@ class CourseWeekDay {
   final DateTime date;
   final String quorum;
   final List<Task> tasks;
-  final double? dayGrade;
-  static const int totalDayGrade = 100;
+  double? dayGrade;
 
   CourseWeekDay({
     required this.id,
     required this.date,
     required this.quorum,
     required this.tasks,
-    this.dayGrade,
+    this.dayGrade = 0.0,
   });
 
   CourseWeekDay copyWith({

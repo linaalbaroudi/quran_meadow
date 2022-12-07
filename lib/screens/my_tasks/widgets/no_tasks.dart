@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../../controllers/tab_manager.dart';
 
-class Empty extends StatelessWidget {
-  const Empty({Key? key}) : super(key: key);
+class NoTasks extends StatelessWidget {
+  const NoTasks({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,7 @@ class Empty extends StatelessWidget {
               ),
               color: Colors.teal,
               onPressed: () {
-                // TODO: Go to Recipes Tab
+                Provider.of<TabManager>(context, listen: false).goToCourses();
               },
               child: const Text('Activate Course'),
             ),

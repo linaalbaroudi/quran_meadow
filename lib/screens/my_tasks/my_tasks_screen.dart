@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './widgets/empty.dart';
+import './widgets/no_tasks.dart';
 
 class MyTasks extends StatelessWidget {
   const MyTasks({Key? key}) : super(key: key);
@@ -7,7 +7,7 @@ class MyTasks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: Add a scaffold widget
-    return const Empty();
+    return const NoTasks();
   }
   // TODO: Add buildGroceryScreen
 }

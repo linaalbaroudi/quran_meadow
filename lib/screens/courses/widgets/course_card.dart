@@ -96,7 +96,7 @@ class _CourseCardState extends State<CourseCard> {
                             style: AppTheme.lightTextTheme.headline3,
                           ),
                           Text(
-                            widget.course.level.id.toString(),
+                            widget.course.level.toString(),
                             style: AppTheme.lightTextTheme.bodyText2,
                           ),
                         ],

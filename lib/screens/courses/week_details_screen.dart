@@ -24,7 +24,7 @@ class _WeekDetailsState extends State<WeekDetails> with SingleTickerProviderStat
     super.initState();
     _index = widget.courseWeek.id-1;
     controller = TabController(
-      length: widget.course.level.weeks.length,
+      length: widget.course.weeks.length,
       initialIndex: _index,
       vsync: this,
     );
@@ -39,6 +39,7 @@ class _WeekDetailsState extends State<WeekDetails> with SingleTickerProviderStat
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(
           "Course Details - Weeks",
@@ -48,7 +49,7 @@ class _WeekDetailsState extends State<WeekDetails> with SingleTickerProviderStat
       body: SafeArea(
         child: TabBarView(
           controller: controller,
-            children: widget.course.level.weeks
+            children: widget.course.weeks
                 .map((week) =>
                     WeekTab(week: week, course: widget.course))
                 .toList(),
@@ -59,7 +60,7 @@ class _WeekDetailsState extends State<WeekDetails> with SingleTickerProviderStat
           FloatingActionButton.small(
             heroTag: 'navigateBefore',
             onPressed: () {
-              (_index != 0) ? _index-- : _index = (widget.course.level.weeks.length - 1);
+              (_index != 0) ? _index-- : _index = (widget.course.weeks.length - 1);
               controller.animateTo(_index);
               setState(() {});
             },
@@ -70,7 +71,7 @@ class _WeekDetailsState extends State<WeekDetails> with SingleTickerProviderStat
           FloatingActionButton.small(
             heroTag: 'navigateNext',
             onPressed: () {
-              (_index != widget.course.level.weeks.length - 1) ? _index++ : _index = 0;
+              (_index != widget.course.weeks.length - 1) ? _index++ : _index = 0;
               controller.animateTo(_index);
               setState(() {});
             },

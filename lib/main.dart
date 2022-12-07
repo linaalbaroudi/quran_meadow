@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'models/course.dart';
-import 'screens/courses/widgets/course_card.dart';
-import 'screens/courses/course_details_screen.dart';
+import 'package:quran_meadows/controllers/tab_manager.dart';
 import 'app_theme.dart';
 import 'home.dart';
+import 'package:provider/provider.dart';
+import './controllers/tab_manager.dart';
+
 
 void main() {
   runApp(const QuranMeadows());
@@ -22,7 +23,13 @@ class QuranMeadows extends StatelessWidget {
     return MaterialApp(
       theme: theme,
       title: 'Quran Meadows',
-      home: const Home(),
+      home: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (context) => TabManager()),
+          // TODO: Add GroceryManager Provider
+        ],
+          child: const Home(),
+      ),
     );
 
     // return MaterialApp(

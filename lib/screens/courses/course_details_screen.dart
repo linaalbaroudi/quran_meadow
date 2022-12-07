@@ -121,7 +121,7 @@ class _CourseDetailsState extends State<CourseDetails>
                                 fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            widget.course.level.id.toString(),
+                            widget.course.level.toString(),
                             style: const TextStyle(
                               //fontSize: 20,
                               color: Colors.white,

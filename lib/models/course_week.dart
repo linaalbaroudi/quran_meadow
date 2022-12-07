@@ -3,7 +3,7 @@ import 'course_week_day.dart';
 class CourseWeek{
   final int id;
   final List<CourseWeekDay> days;
-  final double weeklyExamGrade;
+  final int weeklyExamGrade;
   final double weekGrade;
   static const int totalWeekGrade = 100;
 
@@ -17,7 +17,7 @@ class CourseWeek{
   CourseWeek copyWith({
     int? id,
     List<CourseWeekDay>? days,
-    double? weeklyExamGrade,
+    int? weeklyExamGrade,
     double? weekGrade,
   }) {
     return CourseWeek(
