@@ -35,7 +35,7 @@ class _WeekDetailsState extends State<WeekDetails> with SingleTickerProviderStat
     controller.dispose();
     super.dispose();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,16 +49,16 @@ class _WeekDetailsState extends State<WeekDetails> with SingleTickerProviderStat
       body: SafeArea(
         child: TabBarView(
           controller: controller,
-            children: widget.course.weeks
-                .map((week) =>
-                    WeekTab(week: week, course: widget.course))
-                .toList(),
+          children: widget.course.weeks
+              .map((week) =>
+              WeekTab(week: week, course: widget.course))
+              .toList(),
         ),
       ),
       floatingActionButton: ButtonBar(
         children: [
           FloatingActionButton.small(
-            heroTag: 'navigateBefore',
+            heroTag: 'navigateBefore_week',
             onPressed: () {
               (_index != 0) ? _index-- : _index = (widget.course.weeks.length - 1);
               controller.animateTo(_index);
@@ -69,7 +69,7 @@ class _WeekDetailsState extends State<WeekDetails> with SingleTickerProviderStat
             child: const Icon(Icons.navigate_before),
           ),
           FloatingActionButton.small(
-            heroTag: 'navigateNext',
+            heroTag: 'navigateNext_week',
             onPressed: () {
               (_index != widget.course.weeks.length - 1) ? _index++ : _index = 0;
               controller.animateTo(_index);

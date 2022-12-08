@@ -2,20 +2,15 @@ import 'course_week.dart';
 
 class Course {
   final String title;
-
-  //todo: implement batches
-  final int level; //todo: make it a module
+  final int level;
   final String imageUrl;
   final String institute;
   final bool activated;
   final List<CourseWeek> weeks;
   final double? grade;
 
-  // TODO: Add servings and ingredients here
-
   Course(
       {required this.title,
-      //required this.batch,
       required this.level,
       required this.imageUrl,
       required this.institute,
@@ -76,5 +71,3 @@ class Course {
     ),
   ];
 }
-
-// TODO: Add Ingredient() here

@@ -3,8 +3,8 @@ import 'course_week_day.dart';
 class CourseWeek{
   final int id;
   final List<CourseWeekDay> days;
-  final int weeklyExamGrade;
-  final double weekGrade;
+  late final int weeklyExamGrade;
+  late final double weekGrade;
   static const int totalWeekGrade = 100;
 
   CourseWeek({

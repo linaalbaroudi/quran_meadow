@@ -5,12 +5,12 @@ import '../../../models/models_barrel.dart';
 
 class DayTab extends StatefulWidget {
   const DayTab(
-      {Key? key, required this.day, required this.week, required this.imageUrl})
+      {Key? key, required this.course, required this.week, required this.day})
       : super(key: key);
 
-  final CourseWeekDay day;
+  final Course course;
   final CourseWeek week;
-  final String imageUrl;
+  final CourseWeekDay day;
 
   @override
   State<DayTab> createState() => _DayTabState();
@@ -18,7 +18,15 @@ class DayTab extends StatefulWidget {
 
 class _DayTabState extends State<DayTab> {
 
-  final _Controller = TextEditingController();
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +47,7 @@ class _DayTabState extends State<DayTab> {
               child: Stack(
                 children: <Widget>[
                   Image.asset(
-                    widget.imageUrl,
+                    widget.course.imageUrl,
                     width: double.infinity,
                     //height: 150,
                     fit: BoxFit.cover,
@@ -137,7 +145,7 @@ class _DayTabState extends State<DayTab> {
               child: ListView.builder(
                   itemCount: widget.day.tasks.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return buildTaskField(widget.day.tasks[index]);
+                    return buildTaskField(widget.day.tasks[index], index);
                   }),
             ),
           )
@@ -204,7 +212,7 @@ class _DayTabState extends State<DayTab> {
     );
   }
 
-  Widget buildTaskField(Task task) {
+  Widget buildTaskField(Task task, int key) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: Row(
@@ -235,7 +243,6 @@ class _DayTabState extends State<DayTab> {
                   height: 8,
                 ),
                 TextField(
-                  controller: _Controller,
                   cursorColor: Colors.teal,
                   keyboardType: TextInputType.number,
                   inputFormatters: <TextInputFormatter>[
@@ -256,6 +263,9 @@ class _DayTabState extends State<DayTab> {
                       borderSide: BorderSide(color: Colors.teal),
                     ),
                   ),
+                  onChanged: (value){
+                    _onUpdate(key, value);
+                  },
                 ),
               ],
             ),
@@ -286,6 +296,14 @@ class _DayTabState extends State<DayTab> {
         ],
       ),
     );
+  }
+
+  void _onUpdate(int key, String value) {
+    //ToDo:
+    // Map<String, dynamic> json = {'id': key, 'value': value};
+    // Task oldTask = _day.tasks[key];
+    // Task newTask = oldTask;
+    // newTask.userMark = value as int?;
   }
 
 }

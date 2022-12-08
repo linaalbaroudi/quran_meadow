@@ -75,7 +75,7 @@ class _WeekTabState extends State<WeekTab> {
                   width: 200,
                   height: double.infinity,
                   padding:
-                      const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                  const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                   color: Colors.black38,
                   child: Text(
                     widget.course.title,
@@ -109,7 +109,7 @@ class _WeekTabState extends State<WeekTab> {
             width: double.infinity,
             child: Padding(
               padding:
-                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8),
+              const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -217,7 +217,7 @@ class _WeekTabState extends State<WeekTab> {
           flex: 5,
           child: ListView.builder(
               padding:
-                  const EdgeInsets.symmetric(horizontal: 14.0, vertical: 8),
+              const EdgeInsets.symmetric(horizontal: 14.0, vertical: 8),
               itemCount: widget.week.days.length,
               //shrinkWrap: true,
               itemBuilder: (BuildContext context, int index) {
@@ -226,12 +226,13 @@ class _WeekTabState extends State<WeekTab> {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
                           print(widget.week.days[index].id);
-                      return DayDetails(
-                        day: widget.week.days[index],
-                        week: widget.week,
-                        imageUrl: widget.course.imageUrl,
-                      );
-                    }));
+                          return DayDetails(
+                            course: widget.course,
+                            day: widget.week.days[index],
+                            week: widget.week,
+                          );
+                        }),
+                    );
                   },
                   splashColor: Theme.of(context).primaryColor,
                   borderRadius: BorderRadius.circular(15),

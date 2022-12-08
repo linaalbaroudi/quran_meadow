@@ -1,31 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:quran_meadows/screens/courses/widgets/day_tab.dart';
 import '../../models/models_barrel.dart';
+import 'package:quran_meadows/screens/courses/widgets/day_tab.dart';
+// import 'package:intl/intl.dart';
 
 class DayDetails extends StatefulWidget {
-  const DayDetails(
-      {Key? key, required this.day, required this.week, required this.imageUrl})
-      : super(key: key);
+  const DayDetails({Key? key, required this.course, required this.week, required this.day}) : super(key: key);
 
-  final CourseWeekDay day;
+  final Course course;
   final CourseWeek week;
-  final String imageUrl;
+  final CourseWeekDay day;
 
   @override
   State<DayDetails> createState() => _DayDetailsState();
 }
 
-class _DayDetailsState extends State<DayDetails>
-    with SingleTickerProviderStateMixin {
-  late final TabController controller;
+class _DayDetailsState extends State<DayDetails> with SingleTickerProviderStateMixin {
+
+  late final TabController tabController;
   int _index = 0;
 
   @override
   void initState() {
     super.initState();
-    _index = widget.day.id - 1;
-    controller = TabController(
+    tabController = TabController(
       length: widget.week.days.length,
       initialIndex: _index,
       vsync: this,
@@ -34,7 +31,7 @@ class _DayDetailsState extends State<DayDetails>
 
   @override
   void dispose() {
-    controller.dispose();
+    tabController.dispose();
     super.dispose();
   }
 
@@ -49,46 +46,38 @@ class _DayDetailsState extends State<DayDetails>
           style: Theme.of(context).textTheme.headline1,
         ),
       ),
-      body: SafeArea(
-        child: TabBarView(
-          controller: controller,
-          children: widget.week.days
-              .map(
-                (day) => DayTab(
-                  day: widget.week.days[_index],
-                  imageUrl: widget.imageUrl,
-                  week: widget.week,
-                ),
-              )
-              .toList(),
-        ),
+      body: TabBarView(
+        controller: tabController,
+        children: widget.week.days.map((day) => DayTab(course: widget.course, week: widget.week, day: day)).toList(),
       ),
       floatingActionButton: ButtonBar(
         children: [
           FloatingActionButton.small(
-            heroTag: 'navigateBefore',
+            heroTag: 'navigateBefore_day',
             onPressed: () {
-              (_index != 0) ? _index-- : _index = (widget.week.days.length - 1);
-              controller.animateTo(_index);
-              setState(() {});
-              print("here day id " + _index.toString()+" day is " + DateFormat.yMMMEd().format(widget.day.date));
+              setState(() {
+                (_index != 0) ? _index-- : _index = (widget.week.days.length - 1);
+                tabController.animateTo(_index);
+              });
+              print("index="+_index.toString()+", day="+widget.week.days[_index].id.toString());
             },
             hoverElevation: 0,
             elevation: 0,
             child: const Icon(Icons.navigate_before),
           ),
           FloatingActionButton.small(
-            heroTag: 'navigateNext',
+            heroTag: 'navigateNext_day',
             onPressed: () {
-              (_index != widget.week.days.length - 1) ? _index++ : _index = 0;
-              controller.animateTo(_index);
-              setState(() {});
-              print("here day id " + _index.toString()+" day is " + DateFormat.yMMMEd().format(widget.day.date));
+              setState(() {
+                (_index != widget.week.days.length - 1) ? _index++ : _index = 0;
+                tabController.animateTo(_index);
+              });
+              print("index="+_index.toString()+", day="+widget.week.days[_index].id.toString());
             },
             hoverElevation: 0,
             elevation: 0,
             child: const Icon(Icons.navigate_next),
-          ),
+          )
         ],
       ),
     );
