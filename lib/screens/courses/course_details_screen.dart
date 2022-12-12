@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quran_meadows/models/course_week.dart';
+import 'package:quran_meadows/screens/grades/grades_screen.dart';
 import '../../models/course.dart';
 import 'widgets/weeks_gridview.dart';
 
@@ -142,28 +142,28 @@ class _CourseDetailsState extends State<CourseDetails>
               controller: controller,
               children: [
                 WeeksGridView(course: widget.course),
-                Icon(Icons.settings), //TODO: add Grades screen
+                Grades(course: widget.course), //TODO: add Grades screen
                 Icon(Icons.person), //TODO: add Grades screen
               ],
             ),
           ),
         ],
       ),
-      floatingActionButton: ButtonBar(
-        children: [
-          FloatingActionButton.small(
-            heroTag: 'courseTabs',
-            onPressed: () {
-              (_index != 2) ? _index++ : _index = 0;
-              controller.animateTo(_index);
-              setState(() {});
-            },
-            hoverElevation: 0,
-            elevation: 0,
-            child: const Icon(Icons.navigate_next),
-          )
-        ],
-      ),
+      // floatingActionButton: ButtonBar(
+      //   children: [
+      //     FloatingActionButton.small(
+      //       heroTag: 'courseTabs',
+      //       onPressed: () {
+      //         (_index != 2) ? _index++ : _index = 0;
+      //         controller.animateTo(_index);
+      //         setState(() {});
+      //       },
+      //       hoverElevation: 0,
+      //       elevation: 0,
+      //       child: const Icon(Icons.navigate_next),
+      //     )
+      //   ],
+      // ),
     );
   }
 }
